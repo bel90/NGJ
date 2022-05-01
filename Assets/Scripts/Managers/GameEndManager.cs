@@ -8,6 +8,7 @@ public class GameEndManager : MonoBehaviour {
 	public static GameEndManager instance;
 
     public GameObject gameOverPanel;
+    public GameObject gameWinPanel;
 
     private void Awake() {
         if (instance == null) {
@@ -22,6 +23,12 @@ public class GameEndManager : MonoBehaviour {
         Ghost.instance.KillGhost();
         Character.instance.KillPlayer();
 	}
+
+    public void Win() {
+        gameWinPanel.SetActive(true);
+        Ghost.instance.KillGhost();
+        Character.instance.KillPlayer();
+    }
 
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

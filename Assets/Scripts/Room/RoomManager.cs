@@ -34,6 +34,7 @@ public class RoomManager : MonoBehaviour {
 		Vector3 charPos = Character.instance.gameObject.transform.position;
 		float xPos = roomList[roomIndex].GetComponent<Room>().GetEntryPosition(position);
 		Character.instance.gameObject.transform.position = new Vector3(xPos, charPos.y, charPos.z);
+		SongSoundManager.instance.OpenDoor();
 	}
 
 	//For Ghost

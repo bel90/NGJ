@@ -18,6 +18,10 @@ public class Item : MonoBehaviour {
 		if (!Inventory.instance.ItemInInventory(gameObject)) {
 			Inventory.instance.currentItemActive = gameObject;
 		}
+
+		if (gameObject.CompareTag("Door")) {
+			SongSoundManager.instance.DoorIsClosed();
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision) {

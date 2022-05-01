@@ -15,7 +15,7 @@ public class GhostManager : MonoBehaviour {
     }
 
     private void Start() {
-        SpawnGhostInSec(10);
+        SpawnGhostInSec(40);
     }
 
     public void SpawnGhostInSec(float secs) {

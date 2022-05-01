@@ -14,6 +14,8 @@ public class Ghost : MonoBehaviour {
     private float walkingSpeed = 2f;
     private Rigidbody2D rig;
 
+    public GameObject charAnimHolder;
+
     int ghostRoom = 1;
 
     private void Awake() {
@@ -35,6 +37,12 @@ public class Ghost : MonoBehaviour {
     private void FixedUpdate() {
         if (isChasing) {
             float moveHorizontal = GetGhostDirection();
+
+            if (moveHorizontal < 0) {
+                charAnimHolder.transform.rotation = Quaternion.Euler(0, 180, 0);
+            } else if (moveHorizontal > 0) {
+                charAnimHolder.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
 
             rig.velocity = new Vector2(moveHorizontal * walkingSpeed, 0);
         }

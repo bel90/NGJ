@@ -10,6 +10,8 @@ public class Character : MonoBehaviour {
 	private Rigidbody2D rig;
 
 	public GameObject charAnimHolder;
+	public Animator anim;
+	bool isWalking;
 
 	private void Awake() {
 		if (instance == null) {
@@ -36,6 +38,14 @@ public class Character : MonoBehaviour {
 		}
 
 		rig.velocity = new Vector2(moveHorizontal * walkingSpeed, 0);
+
+		if (moveHorizontal == 0 && isWalking) {
+			isWalking = !isWalking;
+			anim.Play("GirlIdle");
+		} else if (moveHorizontal != 0 && !isWalking) {
+			isWalking = !isWalking;
+			anim.Play("Walk");
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {

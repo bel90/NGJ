@@ -12,6 +12,9 @@ public class Inventory : MonoBehaviour {
 
     [HideInInspector] public GameObject currentItemActive; //For picking up or interacting with an item
 
+	public GameObject winningStick;
+	public GameObject musicBox;
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -40,6 +43,18 @@ public class Inventory : MonoBehaviour {
 					//check if activator is in inventory
 					if (inventoryItems.Count >= 1 && inventoryItems[0].otherPart == currentItemActive) {
 						//TODO activate
+						if (currentItemActive.CompareTag("Door")) {
+							SongSoundManager.instance.UnlockDoor();
+						}
+						if (currentItemActive.CompareTag("Candle")) {
+							SafeSpot.instance.gameObject.SetActive(true);
+							winningStick.SetActive(true);
+							musicBox.SetActive(true);
+						}
+						if (currentItemActive.CompareTag("Winning")) {
+							GameEndManager.instance.Win();
+						}
+
 						Destroy(currentItemActive);
 						Destroy(inventoryItems[0].gameObject);
 						inventoryItems.RemoveAt(0);

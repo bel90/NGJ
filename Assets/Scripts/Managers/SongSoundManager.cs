@@ -11,6 +11,12 @@ public class SongSoundManager : MonoBehaviour {
     public AudioSource chased;
     public AudioSource musicBox;
 
+    public AudioSource doorClosed;
+    public AudioSource openDoor;
+    public AudioSource unlockDoor;
+
+    public AudioSource walking;
+
     //For heartbeat speed calc
     float minPitch = .7f;
     float maxPitch = 3f;
@@ -65,6 +71,22 @@ public class SongSoundManager : MonoBehaviour {
 	}
 
     public void PlayThunder() {
+
+	}
+
+    public void DoorIsClosed() {
+        doorClosed.Play();
+    }
+
+    public void OpenDoor() {
+        openDoor.Play();
+    }
+
+    public void UnlockDoor() {
+        unlockDoor.Play();
+    }
+
+    public void Walk() {
 
 	}
 }
